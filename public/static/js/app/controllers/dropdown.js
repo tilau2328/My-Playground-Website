@@ -3,25 +3,23 @@
 var app = app || {};
 
 app.controller('DropdownCtrl', function ($scope) {
-  $scope.items = [
-    'The first choice!',
-    'And another choice for you.',
-    'but wait! A third!'
-  ];
+    $scope.items = [
 
-  $scope.status = {
-    isopen: false
-  };
+    ];
 
-  $scope.toggled = function(open) {
-      console.log('Dropdown is now: ', open);
-  };
+    $scope.status = {
+        isopen: false
+    };
 
-  $scope.toggleDropdown = function($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
-    $scope.status.isopen = !$scope.status.isopen;
-  };
+    $scope.toggled = function(open) {
+        console.log('Dropdown is now: ', open);
+    };
 
-  $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
+    $scope.toggleDropdown = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.status.isopen = !$scope.status.isopen;
+    };
+
+    $scope.appendToEl = angular.element(document.querySelector('#dropdown-long-content'));
 });
