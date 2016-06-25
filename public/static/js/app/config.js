@@ -3,9 +3,9 @@
 var app = app || angular.module('authApp');
 
 
-app.config([ '$stateProvider', '$urlRouterProvider', 'localStorageServiceProvider', Config]);
+app.config([ '$stateProvider', '$urlRouterProvider', Config]);
 
-function Config($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
+function Config($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('app', {
             url: '/',
@@ -52,12 +52,19 @@ function Config($stateProvider, $urlRouterProvider, localStorageServiceProvider)
                     templateUrl : '/js/app/views/contacts.html'
                 }
             }
+        }).state('app.files', {
+            url: '/files',
+            data: {
+                name: "Files",
+                private: true
+            },
+            views: {
+                'content@': {
+                    templateUrl : '/js/app/views/files.html',
+                    controller  : 'FilesCtrl'
+                }
+            }
         });
 
     $urlRouterProvider.otherwise('/');
-
-    localStorageServiceProvider
-        .setPrefix('authApp')
-        .setStorageType('sessionStorage')
-        .setNotify(true, true);
 }

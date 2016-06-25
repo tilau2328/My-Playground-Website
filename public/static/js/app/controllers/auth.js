@@ -4,8 +4,14 @@
 var app = app || angular.module('authApp');
 
 function AuthCtrl($scope, $rootScope, $location, AuthService) {
-    $scope.logged = AuthService.Logged;
-    $scope.formData = {};
+    $scope.user = AuthService.GetUser() || null;
+    const formData = {
+        username: "",
+        password: "",
+        email: ""
+    };
+    $scope.formData = formData;
+    $scope.$root.logged = ($scope.user != null);
 
     $scope.register = function(){
         const username = $scope.formData.username;
@@ -17,14 +23,13 @@ function AuthCtrl($scope, $rootScope, $location, AuthService) {
         AuthService.Register(username, password, email, function (result) {
             if (result === true) {
                 $rootScope.$root.logged = true;
-                $scope.formData.username = "";
-                $scope.formData.password = "";
-                $scope.formData.email = "";
+                $scope.formData = formData;
                 $location.path('/');
             } else {
                 $scope.error = 'Username already exists';
             }
             $scope.loading = false;
+            $scope.user = AuthService.GetUser();
         });
 
     };
@@ -36,21 +41,21 @@ function AuthCtrl($scope, $rootScope, $location, AuthService) {
         AuthService.Login(username, password, function (result) {
             if (result === true) {
                 $rootScope.$root.logged = true;
-                $scope.formData.username = "";
-                $scope.formData.password = "";
+                $scope.formData = formData;
             } else {
                 $scope.error = 'Username or password is incorrect';
             }
             $scope.loading = false;
+            $scope.user = AuthService.GetUser();
         });
     };
 
     $scope.logout = function(){
         AuthService.Logout();
         $rootScope.$root.logged = false;
+        $scope.user = null;
+        $location.path('/');
     };
-
-    $scope.logout();
 
 }
 

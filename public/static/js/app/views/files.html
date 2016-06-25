@@ -1,0 +1,33 @@
+<div id="files" class="container" ng-controller="DropdownCtrl">
+    <h1>Files: {{ currentPath }}</h1>
+    <div uib-dropdown auto-close="outsideClick" id="file-dropdown-{{$index}}" ng-click="$event.stopPropagation()"  ng-repeat="file in files">
+        <div class="btn-group">
+            <button class="btn btn-default">
+                <i class="fa fa-folder" aria-hidden="true" ng-if="file.isDirectory"></i>
+                <i class="fa fa-file" aria-hidden="true" ng-if="!file.isDirectory"></i>
+                {{ file.name }}
+            </button>
+            <button class="btn btn-default" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false" >
+                <span class="caret"></span>
+            </button>
+            <ul class="uib-dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="file-dropdown-{{$index}}">
+                <li role="presentation"><a role="menuitem" class="btn" ng-if="!file.isDirectory" ng-click="get(file)">Get</a></li>
+                <li role="presentation"><a role="menuitem" class="btn" ng-if="file.isDirectory" ng-click="list(file.path, file.name)">Enter</a></li>
+                <li role="presentation"><a role="menuitem" class="btn" ng-click="rename(file)">Rename</a></li>
+                <li role="presentation"><a role="menuitem" class="btn" ng-click="copy(file)">Copy</a></li>
+                <li role="presentation"><a role="menuitem" class="btn" ng-click="cut(file)">Cut</a></li>
+                <li role="presentation"><a role="menuitem" class="btn" ng-click="delete(file)">Delete</a></li>
+            </ul>
+        </div>
+        <p></p>
+    </div>
+    <hr/>
+    <label class="btn btn-default btn-file" for="files-input">
+        {{ !filesToUpload.length ? "Browse" : "Change" }}
+    </label>
+    <input upload-files="filesToUpload" id="files-input" name='files' type="file" style="display:none" multiple/>
+    <button class="btn btn-default" ng-click="upload()" ng-disabled="!filesToUpload.length">Upload</button>
+    <button class="btn btn-default" ng-click="paste()" ng-disabled="!clipboard.mode">Paste</button>
+    <button class="btn btn-default" ng-click="newDir()" >Create Folder</button>
+    <button class="btn btn-default" ng-click="back()" ng-if="currentPath!='/'" >Back</button>
+</div>

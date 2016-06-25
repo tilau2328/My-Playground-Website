@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-left">
                     <li uib-dropdown auto-close="outsideClick" id="public-dropdown" ng-click="$event.stopPropagation()" ng-if="divs.public.length > 0">
-                        <a class="dropdown-toggle btn" uib-dropdown-toggle role="button"
+                        <a class="btn" uib-dropdown-toggle role="button"
                         aria-haspopup="true" aria-expanded="false">Public <span class="caret"></span></a>
                         <ul class="uib-dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="public-dropdown" ng-if="divs.public.length > 0">
                             <li ng-repeat="div in divs.public">
@@ -26,7 +26,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li uib-dropdown auto-close="outsideClick" id="private-dropdown" ng-click="$event.stopPropagation()" ng-if="$root.logged && divs.private.length > 0">
-                        <a class="dropdown-toggle btn" uib-dropdown-toggle role="button"
+                        <a class="btn" uib-dropdown-toggle role="button"
                         aria-haspopup="true" aria-expanded="false">Private <span class="caret"></span></a>
                         <ul class="uib-dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="private-dropdown" ng-if="divs.private.length > 0">
                             <li ng-repeat="div in divs.private">
