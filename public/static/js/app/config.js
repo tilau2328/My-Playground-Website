@@ -8,10 +8,11 @@ app.config([ '$stateProvider', '$urlRouterProvider', 'localStorageServiceProvide
 function Config($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
     $stateProvider
         .state('app', {
-            url:'/',
+            url: '/',
             views: {
                 'navbar': {
-                    templateUrl : '/js/app/views/navbar.html'
+                    templateUrl : '/js/app/views/navbar.html',
+                    controller  : 'NavCtrl'
                 },
                 'content': {
                     templateUrl : '/js/app/views/home.html'
@@ -21,12 +22,34 @@ function Config($stateProvider, $urlRouterProvider, localStorageServiceProvider)
                 }
             }
         }).state('app.register', {
-            url:'/register',
+            url: '/register',
             data: { name: "Files" },
             views: {
                 'content@': {
                     templateUrl : '/js/app/views/register.html',
                     controller  : 'AuthCtrl'
+                }
+            }
+        }).state('app.about', {
+            url: '/about',
+            data: {
+                name: "About Me",
+                private: false
+            },
+            views: {
+                'content@': {
+                    templateUrl : '/js/app/views/about.html'
+                }
+            }
+        }).state('app.contacts', {
+            url: '/contacts',
+            data: {
+                name: "Contacts",
+                private: false
+            },
+            views: {
+                'content@': {
+                    templateUrl : '/js/app/views/contacts.html'
                 }
             }
         });

@@ -1,7 +1,7 @@
 <li uib-dropdown auto-close="outsideClick" id="login-dropdown" ng-click="$event.stopPropagation()">
     <a class="btn" uib-dropdown-toggle role="button"
         aria-haspopup="true" aria-expanded="false" ng-if="!$root.logged">
-        Login<span class="caret"></span>
+        Login <span class="caret"></span>
     </a>
     <a class="btn" ng-if="$root.logged" ng-click="logout()">Logout</a>
     <ul class="uib-dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="login-dropdown" ng-if="!$root.logged">
