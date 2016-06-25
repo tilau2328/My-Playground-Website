@@ -12,14 +12,9 @@ const NavCtrl = function ($scope, $state) {
 
     for(var i = 0; i < divs.length; i++){
         var div = divs[i];
-        if(div.data.private){
-            $scope.divs.private.push(div);
-        } else {
-            $scope.divs.public.push(div);
-        }
-        console.log(div);
+        if(div.data.private){ $scope.divs.private.push(div); }
+        else { $scope.divs.public.push(div); }
     }
-    console.log($scope.divs);
 }
 
 app.controller('NavCtrl', ['$scope', '$state', NavCtrl]);

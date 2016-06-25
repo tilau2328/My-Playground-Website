@@ -1,6 +1,31 @@
+
 body {
     margin-top: 60px;
+    padding: 50px;
+    background-image: url("../imgs/wallpaper.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+
+h2 {
+    color: #b6230e;
+}
+
+p {
+    text-indent: 10px;
+}
+
+.text-box {
+    border: 10px solid #666;
+    background-color: #666;
+}
+
+.text-box a {
+    color: #FFF;
+}
+
 
 #footer {
    position:fixed;
