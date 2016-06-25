@@ -2,12 +2,13 @@
     <h2>Files: {{ currentPath }}</h2>
     <div uib-dropdown auto-close="outsideClick" id="file-dropdown-{{$index}}" ng-click="$event.stopPropagation()"  ng-repeat="file in files">
         <div class="btn-group">
-            <button class="btn btn-default">
+            <button class="btn btn-default" ng-click="file.isDirectory ? list(file.path, file.name) : get(file)">
                 <i class="fa fa-folder" aria-hidden="true" ng-if="file.isDirectory"></i>
                 <i class="fa fa-file" aria-hidden="true" ng-if="!file.isDirectory"></i>
                 {{ file.name }}
             </button>
-            <button class="btn btn-default dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false" >
+            <button class="btn btn-default dropdown-toggle" uib-dropdown-toggle role="button"
+            aria-haspopup="true" aria-expanded="false">
                 <span class="caret"></span>
             </button>
         </div>
