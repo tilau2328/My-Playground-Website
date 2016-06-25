@@ -64,6 +64,18 @@ function Config($stateProvider, $urlRouterProvider) {
                     controller  : 'FilesCtrl'
                 }
             }
+        }).state('app.music', {
+            url:'/music',
+            data: {
+                name: "Music",
+                private: true
+            },
+            views: {
+                'content@': {
+                    templateUrl : '/js/app/views/music.html',
+                    controller: 'MusicCtrl'
+                }
+            }
         });
 
     $urlRouterProvider.otherwise('/');

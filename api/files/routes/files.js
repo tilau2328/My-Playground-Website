@@ -254,6 +254,7 @@ const new_dir_handler = function(req, res) {
     }
 }
 
+// TODO: Implementar verificação de token
 const routes = [{ method: "GET",    path: "/files",          handler: files_handler        },
                 { method: "POST",   path: "/files",          config: { handler: upload_files_handler,
                   payload: { output: 'stream', parse: true, allow: 'multipart/form-data' }}},

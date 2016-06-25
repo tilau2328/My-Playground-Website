@@ -1,0 +1,11 @@
+<div class="btn pull-right" id="footerPlayer">
+    <span ng-if="currentPlaying">{{ currentPlaying.title }} by {{ currentPlaying.artist }} ({{ currentPostion }} / {{ currentDuration }})</span>
+    
+    <div class="btn-group">
+        <a prev-track class="btn">Prev</a>
+        <a play-pause-toggle class="btn" data-play="Play" data-pause="Pause">Play</a>
+        <a stop-music class="btn">Stop</a>
+        <a next-track class="btn">Next</a>
+    </div>
+    <sound-manager></sound-manager>
+</div>
