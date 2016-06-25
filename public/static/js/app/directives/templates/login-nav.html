@@ -1,0 +1,32 @@
+<li class="btn-group" uib-dropdown id="login-dropdown" auto-close="outsideClick">
+    <a class="btn" uib-dropdown-toggle role="button"
+        aria-haspopup="true" aria-expanded="false" ng-if="!logged">
+        Login {{ username }} <span class="caret"></span>
+    </a>
+    <a class="btn" ng-if="logged" ng-click="logout()">Logout</a>
+    <ul class="uib-dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="login-dropdown" ng-if="!logged">
+        <form class="navbar-form" name="form" novalidate>
+            <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.username.$invalid }">
+                <input type="text" class="form-control" placeholder="Username" ng-model="username" required>
+                <div ng-messages="form.$submitted && form.username.$error" class="help-block">
+                    <div ng-message="required">Username is required</div>
+                </div>
+            </div>
+            <br/>
+            <div class="form-group"  ng-class="{ 'has-error': form.$submitted && form.password.$invalid }">
+                <input type="password" class="form-control" placeholder="Password" ng-model="password" required>
+                <div ng-messages="form.$submitted && form.password.$error" class="help-block">
+                    <div ng-message="required">Password is required</div>
+                </div>
+            </div>
+            <li role="separator" class="divider"></li>
+            <div class="form-group">
+                <button ng-click="form.$valid && login()" class="btn btn-default" ng-disabled="loading">Login</button>
+            </div>
+            <div class="form-group">
+                <a ui-sref="app.register" class="btn btn-default">Register</a>
+            </div>
+            <div ng-if="error" class="alert alert-danger">{{error}}</div>
+        </form>
+    </ul>
+</li>

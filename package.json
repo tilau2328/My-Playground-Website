@@ -1,0 +1,22 @@
+{
+  "name": "node-cenas",
+  "version": "1.0.0",
+  "description": "cenas",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "Tilau",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "boom": "^3.2.2",
+    "glob": "^7.0.5",
+    "hapi": "^13.4.1",
+    "hapi-auth-jwt": "^4.0.0",
+    "inert": "^4.0.0",
+    "joi": "^8.4.2",
+    "joi-objectid": "^2.0.0",
+    "mongoose": "^4.5.1"
+  }
+}
