@@ -3,50 +3,57 @@
 
 var app = app || angular.module('authApp');
 
-function AuthCtrl($scope, AuthService) {
-    $scope.loading = false;
+function AuthCtrl($scope, $rootScope, $location, AuthService) {
+    $scope.logged = AuthService.Logged;
 
     $scope.register = function(){
-        const username = $scope.username;
-        const password = $scope.password;
+        const username = $scope.formData.username;
+        const email = $scope.formData.email;
+        const password = $scope.formData.password;
         // TODO: implementar verificação de password repetida no form
-        console.log($scope.username);
+        // TODO: implementar persistencia entre o controlador de login e o de register, para o logged
         $scope.loading = true;
-        AuthService.Login(username, password, function (result) {
+        AuthService.Register(username, password, email, function (result) {
+            console.log($rootScope);
             if (result === true) {
-                console.log("YAAY");
+                $rootScope.logged = true;
+                console.log("now logged");
+                $location.path('/');
             } else {
-                console.log("MEH");
-                $scope.error = 'Username or password is incorrect';
-                $scope$scope.loading = false;
+                $scope.error = 'Username already exists';
             }
+            $scope.loading = false;
         });
-        $scope.logged = true;
+
     };
 
     $scope.login = function(){
-        const username = $scope.username;
-        const password = $scope.password;
-        console.log($scope.username);
+        const username = $scope.formData.username;
+        const password = $scope.formData.password;
         $scope.loading = true;
         AuthService.Login(username, password, function (result) {
+            console.log($rootScope);
             if (result === true) {
-                console.log("YAAY");
+                console.log("now logged");
+                $rootScope.logged = true;
             } else {
-                console.log("MEH");
                 $scope.error = 'Username or password is incorrect';
-                $scope$scope.loading = false;
             }
+            $scope.loading = false;
         });
-        $scope.logged = true;
     };
 
     $scope.logout = function(){
-        delete $scope.username;
-        delete $scope.password;
-        $scope.logged = false;
+        $scope.formData = {
+            username: "",
+            password: ""
+        }
+        AuthService.Logout();
+        $rootScope.logged = false;
     };
 
+    $scope.logout();
+    console.log($rootScope.$root);
 }
 
-app.controller('AuthCtrl', ["$scope", "AuthService", AuthCtrl]);
+app.controller('AuthCtrl', ["$scope", "$rootScope", "$location", "AuthService", AuthCtrl]);

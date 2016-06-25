@@ -6,7 +6,6 @@ var app = app || angular.module('authApp');
 app.factory('AuthService', ['$http', 'localStorageService', AuthService]);
 
 function AuthService($http, localStorageService) {
-
     function Register(username, password, email, callback) {
         $http.post('/register', { username: username, password: password, email: email })
             .success(function (response) {
@@ -17,6 +16,9 @@ function AuthService($http, localStorageService) {
                 } else {
                     callback(false);
                 }
+            }).error(function(err){
+                console.log(err);
+                callback(false);
             });
     }
 
@@ -30,6 +32,9 @@ function AuthService($http, localStorageService) {
                 } else {
                     callback(false);
                 }
+            }).error(function(err){
+                console.log(err);
+                callback(false);
             });
     }
 

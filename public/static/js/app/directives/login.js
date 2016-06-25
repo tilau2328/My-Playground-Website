@@ -6,7 +6,7 @@ const login = function(){
     return {
         restrict: 'E',
         scope: {
-            user: "="
+            logged: "="
         },
         templateUrl: "/js/app/directives/templates/login-nav.html",
         replace: true,
