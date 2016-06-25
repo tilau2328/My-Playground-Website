@@ -1,5 +1,5 @@
 <div id="files" class="container" ng-controller="DropdownCtrl">
-    <h1>Files: {{ currentPath }}</h1>
+    <h2>Files: {{ currentPath }}</h2>
     <div uib-dropdown auto-close="outsideClick" id="file-dropdown-{{$index}}" ng-click="$event.stopPropagation()"  ng-repeat="file in files">
         <div class="btn-group">
             <button class="btn btn-default">
@@ -7,18 +7,18 @@
                 <i class="fa fa-file" aria-hidden="true" ng-if="!file.isDirectory"></i>
                 {{ file.name }}
             </button>
-            <button class="btn btn-default" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false" >
+            <button class="btn btn-default dropdown-toggle" uib-dropdown-toggle role="button" aria-haspopup="true" aria-expanded="false" >
                 <span class="caret"></span>
             </button>
-            <ul class="uib-dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="file-dropdown-{{$index}}">
-                <li role="presentation"><a role="menuitem" class="btn" ng-if="!file.isDirectory" ng-click="get(file)">Get</a></li>
-                <li role="presentation"><a role="menuitem" class="btn" ng-if="file.isDirectory" ng-click="list(file.path, file.name)">Enter</a></li>
-                <li role="presentation"><a role="menuitem" class="btn" ng-click="rename(file)">Rename</a></li>
-                <li role="presentation"><a role="menuitem" class="btn" ng-click="copy(file)">Copy</a></li>
-                <li role="presentation"><a role="menuitem" class="btn" ng-click="cut(file)">Cut</a></li>
-                <li role="presentation"><a role="menuitem" class="btn" ng-click="delete(file)">Delete</a></li>
-            </ul>
         </div>
+        <ul class="uib-dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="file-dropdown-{{$index}}">
+            <li role="presentation"><a role="menuitem" class="btn" ng-if="!file.isDirectory" ng-click="get(file)">Get</a></li>
+            <li role="presentation"><a role="menuitem" class="btn" ng-if="file.isDirectory" ng-click="list(file.path, file.name)">Enter</a></li>
+            <li role="presentation"><a role="menuitem" class="btn" ng-click="rename(file)">Rename</a></li>
+            <li role="presentation"><a role="menuitem" class="btn" ng-click="copy(file)">Copy</a></li>
+            <li role="presentation"><a role="menuitem" class="btn" ng-click="cut(file)">Cut</a></li>
+            <li role="presentation"><a role="menuitem" class="btn" ng-click="delete(file)">Delete</a></li>
+        </ul>
         <p></p>
     </div>
     <hr/>

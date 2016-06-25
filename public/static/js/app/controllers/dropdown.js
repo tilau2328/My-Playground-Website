@@ -3,9 +3,6 @@
 var app = app || {};
 
 app.controller('DropdownCtrl', function ($scope) {
-    $scope.items = [
-
-    ];
 
     $scope.status = {
         isopen: false
