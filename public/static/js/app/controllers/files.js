@@ -30,7 +30,7 @@ function FilesCtrl($scope, $http, $window, FileSaver) {
         if(($scope.currentPath == file.path)
         || ($scope.currentPath == "/"
         &&  file.path == "")){
-            for(var i=0; i<$scope.files.length; i++){
+            for(var i=0; i< $scope.files.length; i++){
                 if($scope.files[i].name == file.name){
                     $scope.files.splice(i, 1);
                     break;
@@ -72,8 +72,8 @@ function FilesCtrl($scope, $http, $window, FileSaver) {
     $scope.upload = function(){
         var path = $scope.currentPath;
         if(path == "/") { path = ""; }
-
         var files = $scope.filesToUpload;
+        console.log($scope);
         if(files.length>0){
             for(var i=0; i<files.length; i++){
                 var file = files[i];

@@ -22,6 +22,8 @@
         </ul>
         <p></p>
     </div>
+    {{ filesToUpload }}
+    {{ filesToUpload.length }}
     <hr/>
     <label class="btn btn-default btn-file" for="files-input">
         {{ !filesToUpload.length ? "Browse" : "Change" }}
